@@ -1,27 +1,60 @@
-# Temp
+# Ngx-Socket-IO
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
+> ⚠️ This repository demonstrates an issue and is not meant to be used.
 
-## Development server
+## Steps for reproduction
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+git clone https://github.com/GregOnNet/ngx-socket-io-jest-issue.git
+cd ngx-socket-io-jest-issue
+npm intall
+npm test
+```
 
-## Code scaffolding
+### Expected Error
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+$ jest
+ FAIL  src/app/consumer.service.spec.ts
+  ● Test suite failed to run
 
-## Build
+    Jest encountered an unexpected token
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    This usually means that you are trying to import a file which Jest cannot parse, e.g. it's not plain JavaScript.
 
-## Running unit tests
+    By default, if Jest sees a Babel config, it will use that to transform your files, ignoring "node_modules".
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    Here's what you can do:
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
 
-## Running end-to-end tests
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/en/configuration.html
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    Details:
 
-## Further help
+    /Users/gregor/workbench/scratch/angular/ngx-socket-io-playground/node_modules/ngx-socket-io/index.js:1
+    ({"Object.<anonymous>":function(module,exports,require,__dirname,__filename,global,jest){export { SocketIoModule } from './src/socket-io.module';
+                                                                                             ^^^^^^
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    SyntaxError: Unexpected token export
+
+      1 | import { Injectable } from '@angular/core';
+    > 2 | import { Socket } from 'ngx-socket-io';
+        | ^
+      3 |
+      4 | @Injectable({
+      5 |   providedIn: 'root'
+
+      at ScriptTransformer._transformAndBuildScript (node_modules/jest-runtime/build/ScriptTransformer.js:440:17)
+      at Object.<anonymous> (src/app/consumer.service.ts:2:1)
+
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        1.683s
+Ran all test suites.
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
