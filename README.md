@@ -7,7 +7,7 @@
 ```bash
 git clone https://github.com/GregOnNet/ngx-socket-io-jest-issue.git
 cd ngx-socket-io-jest-issue
-npm intall
+npm install
 npm test
 ```
 
